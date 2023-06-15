@@ -1,0 +1,687 @@
+{
+	"jobConfig": {
+		"name": "susheel-final-poc",
+		"description": "",
+		"role": "arn:aws:iam::462533425464:role/glue-s3-redshift",
+		"command": "glueetl",
+		"version": "3.0",
+		"runtime": null,
+		"workerType": "G.1X",
+		"numberOfWorkers": 10,
+		"maxCapacity": 10,
+		"maxRetries": 0,
+		"timeout": 2880,
+		"maxConcurrentRuns": 1,
+		"security": "none",
+		"scriptName": "poc2.py",
+		"scriptLocation": "s3://aws-glue-assets-462533425464-eu-north-1/scripts/",
+		"language": "python-3",
+		"jobParameters": [],
+		"tags": [],
+		"jobMode": "VISUAL_MODE",
+		"createdOn": "2023-06-13T06:36:03.224Z",
+		"developerMode": false,
+		"connectionsList": [
+			"myredshiftconnection"
+		],
+		"temporaryDirectory": "s3://aws-glue-assets-462533425464-eu-north-1/temporary/",
+		"logging": true,
+		"glueHiveMetastore": true,
+		"etlAutoTuning": true,
+		"metrics": true,
+		"spark": true,
+		"bookmark": "job-bookmark-disable",
+		"sparkPath": "s3://aws-glue-assets-462533425464-eu-north-1/sparkHistoryLogs/"
+	},
+	"dag": {
+		"node-1": {
+			"nodeId": "node-1",
+			"dataPreview": false,
+			"previewAmount": 0,
+			"inputs": [],
+			"name": "Data Catalog table",
+			"generatedNodeName": "DataCatalogtable_node1",
+			"classification": "DataSource",
+			"type": "Catalog",
+			"isCatalog": true,
+			"database": "finaldb",
+			"table": "transform",
+			"calculatedType": "",
+			"runtimeParameters": [],
+			"codeGenVersion": 2
+		},
+		"node-2": {
+			"nodeId": "node-2",
+			"dataPreview": false,
+			"previewAmount": 0,
+			"inputs": [
+				"node-1"
+			],
+			"name": "ApplyMapping",
+			"generatedNodeName": "ApplyMapping_node2",
+			"classification": "Transform",
+			"type": "ApplyMapping",
+			"mapping": [
+				{
+					"toKey": "_96035_addressverificationca_verification_status",
+					"fromPath": [
+						"_96035_addressverificationca_verification_status"
+					],
+					"toType": "long",
+					"fromType": "long",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "accountgroup",
+					"fromPath": [
+						"accountgroup"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "addressline1",
+					"fromPath": [
+						"addressline1"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "addressline2",
+					"fromPath": [
+						"addressline2"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "addressline3",
+					"fromPath": [
+						"addressline3"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "approved_count",
+					"fromPath": [
+						"approved_count"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "businessnumber",
+					"fromPath": [
+						"businessnumber"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "candelete",
+					"fromPath": [
+						"candelete"
+					],
+					"toType": "boolean",
+					"fromType": "boolean",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "canupdate",
+					"fromPath": [
+						"canupdate"
+					],
+					"toType": "boolean",
+					"fromType": "boolean",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "city",
+					"fromPath": [
+						"city"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "code",
+					"fromPath": [
+						"code"
+					],
+					"toType": "long",
+					"fromType": "long",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "companytype",
+					"fromPath": [
+						"companytype"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "country",
+					"fromPath": [
+						"country"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "emailaddress",
+					"fromPath": [
+						"emailaddress"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "enterdtm",
+					"fromPath": [
+						"enterdtm"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "enterusername",
+					"fromPath": [
+						"enterusername"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "golden_record",
+					"fromPath": [
+						"golden_record"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "id",
+					"fromPath": [
+						"id"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "internalid",
+					"fromPath": [
+						"internalid"
+					],
+					"toType": "long",
+					"fromType": "long",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "jdedwardaccountid",
+					"fromPath": [
+						"jdedwardaccountid"
+					],
+					"toType": "long",
+					"fromType": "long",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "lastchgdtm",
+					"fromPath": [
+						"lastchgdtm"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "lastchgusername",
+					"fromPath": [
+						"lastchgusername"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "latitude",
+					"fromPath": [
+						"latitude"
+					],
+					"toType": "double",
+					"fromType": "double",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "location_confidence",
+					"fromPath": [
+						"location_confidence"
+					],
+					"toType": "long",
+					"fromType": "long",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "location_response_count",
+					"fromPath": [
+						"location_response_count"
+					],
+					"toType": "double",
+					"fromType": "double",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "location_verification_status",
+					"fromPath": [
+						"location_verification_status"
+					],
+					"toType": "long",
+					"fromType": "long",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "longitude",
+					"fromPath": [
+						"longitude"
+					],
+					"toType": "double",
+					"fromType": "double",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "match_cluster",
+					"fromPath": [
+						"match_cluster"
+					],
+					"toType": "long",
+					"fromType": "long",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "match_datetime",
+					"fromPath": [
+						"match_datetime"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "match_member",
+					"fromPath": [
+						"match_member"
+					],
+					"toType": "long",
+					"fromType": "long",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "match_multigroup",
+					"fromPath": [
+						"match_multigroup"
+					],
+					"toType": "long",
+					"fromType": "long",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "match_status",
+					"fromPath": [
+						"match_status"
+					],
+					"toType": "long",
+					"fromType": "long",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "match_strategy",
+					"fromPath": [
+						"match_strategy"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "match_user",
+					"fromPath": [
+						"match_user"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "model_confidence",
+					"fromPath": [
+						"model_confidence"
+					],
+					"toType": "double",
+					"fromType": "double",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "name",
+					"fromPath": [
+						"name"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "phonenumber",
+					"fromPath": [
+						"phonenumber"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "postalcode",
+					"fromPath": [
+						"postalcode"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "proposed_count",
+					"fromPath": [
+						"proposed_count"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "sales",
+					"fromPath": [
+						"sales"
+					],
+					"toType": "long",
+					"fromType": "long",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "segment",
+					"fromPath": [
+						"segment"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "sourcecode",
+					"fromPath": [
+						"sourcecode"
+					],
+					"toType": "long",
+					"fromType": "long",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "sourcesystem",
+					"fromPath": [
+						"sourcesystem"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "stateprovince",
+					"fromPath": [
+						"stateprovince"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "status",
+					"fromPath": [
+						"status"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "std_address",
+					"fromPath": [
+						"std_address"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "std_city",
+					"fromPath": [
+						"std_city"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "std_country",
+					"fromPath": [
+						"std_country"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "std_country_code",
+					"fromPath": [
+						"std_country_code"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "std_county",
+					"fromPath": [
+						"std_county"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "std_full_address",
+					"fromPath": [
+						"std_full_address"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "std_state",
+					"fromPath": [
+						"std_state"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "std_zip",
+					"fromPath": [
+						"std_zip"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "validationstatusid",
+					"fromPath": [
+						"validationstatusid"
+					],
+					"toType": "long",
+					"fromType": "long",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "website",
+					"fromPath": [
+						"website"
+					],
+					"toType": "string",
+					"fromType": "string",
+					"dropped": false,
+					"children": null
+				},
+				{
+					"toKey": "zendeskaccountid",
+					"fromPath": [
+						"zendeskaccountid"
+					],
+					"toType": "long",
+					"fromType": "long",
+					"dropped": false,
+					"children": null
+				}
+			],
+			"parentsValid": true,
+			"calculatedType": "",
+			"codeGenVersion": 2
+		},
+		"node-3": {
+			"nodeId": "node-3",
+			"dataPreview": false,
+			"previewAmount": 0,
+			"inputs": [
+				"node-2"
+			],
+			"name": "Amazon Redshift",
+			"generatedNodeName": "AmazonRedshift_node3",
+			"classification": "DataSink",
+			"type": "AmazonRedshift",
+			"streamingBatchInterval": 100,
+			"data": {
+				"accessType": "connection",
+				"sourceType": "table",
+				"connection": {
+					"value": "myredshiftconnection",
+					"label": "myredshiftconnection",
+					"description": "-"
+				},
+				"schema": {
+					"value": "public",
+					"label": "public",
+					"description": null
+				},
+				"catalogDatabase": null,
+				"catalogRedshiftTable": null,
+				"catalogRedshiftSchema": null,
+				"table": {
+					"value": "susheeldemo",
+					"label": "susheeldemo",
+					"description": "public"
+				},
+				"catalogTable": null,
+				"tempDir": "s3://aws-glue-assets-462533425464-eu-north-1/temporary/",
+				"iamRole": null,
+				"sampleQuery": null,
+				"preAction": null,
+				"postAction": null,
+				"action": "truncate",
+				"tableSchema": [],
+				"selectedColumns": [],
+				"crawlerConnection": null,
+				"tablePrefix": null,
+				"upsert": false,
+				"mergeAction": "simple",
+				"mergeWhenMatched": "update",
+				"mergeWhenNotMatched": "insert",
+				"mergeClause": null,
+				"stagingTable": "public.susheeldemo_temp_f96cd1",
+				"advancedOptions": []
+			},
+			"calculatedType": "",
+			"codeGenVersion": 2
+		}
+	},
+	"hasBeenSaved": false
+}
